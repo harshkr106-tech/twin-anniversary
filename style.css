@@ -1,0 +1,444 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(180deg,#0d5ea6,#45b7ff,#8ad9ff);
+    overflow-x:hidden;
+    color:white;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.bubble{
+    position:absolute;
+    bottom:-120px;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+    animation:float 18s linear infinite;
+}
+
+.b1{left:10%;width:70px;height:70px;}
+.b2{left:28%;width:45px;height:45px;animation-duration:14s;}
+.b3{left:52%;width:90px;height:90px;animation-duration:20s;}
+.b4{left:75%;width:55px;height:55px;animation-duration:16s;}
+.b5{left:90%;width:75px;height:75px;animation-duration:22s;}
+
+@keyframes float{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-130vh);
+    }
+}
+
+/* =========================
+   PAGES
+========================= */
+
+.page{
+    display:none;
+    min-height:100vh;
+
+    padding:30px 18px;
+
+    justify-content:center;
+    align-items:center;
+}
+
+.page.active{
+    display:flex;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+
+    width:100%;
+    max-width:420px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:25px;
+
+    padding:28px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+    animation:fade .7s ease;
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+h1{
+margin:15px 0;
+font-size:32px;
+}
+
+h2{
+margin-bottom:12px;
+}
+
+p{
+line-height:1.8;
+margin:18px 0;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button{
+
+margin-top:25px;
+
+padding:15px 28px;
+
+border:none;
+
+border-radius:40px;
+
+background:#ff5da8;
+
+color:white;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+background:#ff3d94;
+
+}
+
+/* =========================
+   MEMORY
+========================= */
+
+.memory{
+
+margin:15px 0;
+
+padding:15px;
+
+background:rgba(255,255,255,.16);
+
+border-radius:15px;
+
+}
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope{
+
+margin:25px auto;
+
+width:140px;
+
+height:100px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:55px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.envelope:hover{
+
+transform:scale(1.08);
+
+}
+
+.letter{
+
+margin-top:20px;
+
+background:white;
+
+color:#333;
+
+padding:20px;
+
+border-radius:18px;
+
+text-align:left;
+
+line-height:1.8;
+
+}
+
+.hidden{
+
+display:none;
+
+}
+/* =========================
+   REAL ENVELOPE
+========================= */
+
+.envelope{
+    position:relative;
+    width:220px;
+    height:140px;
+    margin:30px auto;
+    cursor:pointer;
+}
+
+.envelope-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#4aa8ff;
+    border-radius:8px;
+}
+
+.envelope-flap{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#66b8ff;
+
+    clip-path:polygon(0 0,50% 60%,100% 0);
+
+    transform-origin:top;
+
+    transition:0.7s;
+}
+
+.letter-paper{
+
+    position:absolute;
+
+    left:10%;
+
+    width:80%;
+
+    height:110px;
+
+    background:white;
+
+    border-radius:8px;
+
+    bottom:10px;
+
+    transition:0.8s;
+
+}
+
+/* OPEN */
+
+.envelope.open .envelope-flap{
+
+    transform:rotateX(180deg);
+
+}
+
+.envelope.open .letter-paper{
+
+    transform:translateY(-90px);
+
+}
+/* =========================
+   PHOTO GALLERY
+========================= */
+
+.gallery{
+    margin:25px 0;
+}
+
+.photo{
+    margin:20px 0;
+    text-align:center;
+}
+
+.photo img{
+    width:100%;
+    border-radius:18px;
+    display:block;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+    transition:transform .3s;
+}
+
+.photo img:hover{
+    transform:scale(1.03);
+}
+
+.photo p{
+    margin-top:10px;
+    font-size:15px;
+    color:white;
+}
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti{
+    position:fixed;
+    top:-20px;
+    width:10px;
+    height:10px;
+    pointer-events:none;
+    z-index:9999;
+    animation:fall 4s linear forwards;
+}
+
+@keyframes fall{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+
+}
+/* =========================
+   TWINKLING STARS
+========================= */
+
+.star{
+    position:fixed;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 10px white;
+    animation:twinkle 2.5s infinite alternate;
+    z-index:0;
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:.2;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.8);
+    }
+
+}
+
+.s1{top:10%;left:15%;animation-delay:.2s;}
+.s2{top:20%;left:70%;animation-delay:1s;}
+.s3{top:35%;left:40%;animation-delay:2s;}
+.s4{top:55%;left:85%;animation-delay:.5s;}
+.s5{top:70%;left:20%;animation-delay:1.5s;}
+.s6{top:80%;left:60%;animation-delay:2.2s;}
+.s7{top:45%;left:10%;animation-delay:.8s;}
+.s8{top:15%;left:90%;animation-delay:1.8s;}
+.friendship-timer{
+    margin-top:35px;
+    text-align:center;
+}
+
+.friendship-timer h2{
+    color:#fff;
+    margin-bottom:12px;
+}
+
+#friendshipTimer{
+    font-size:24px;
+    font-weight:bold;
+    color:#9ed8ff;
+    text-shadow:0 0 15px rgba(120,200,255,.8);
+    line-height:1.5;
+}
+.glow-btn{
+    margin-top:30px;
+    padding:15px 35px;
+    border:none;
+    border-radius:50px;
+    background:#4da6ff;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 15px #4da6ff,
+               0 0 30px #4da6ff;
+    transition:.3s;
+    animation:pulseGlow 2s infinite;
+}
+
+.glow-btn:hover{
+    transform:scale(1.08);
+}
+
+@keyframes pulseGlow{
+    0%{
+        box-shadow:0 0 10px #4da6ff;
+    }
+    50%{
+        box-shadow:0 0 25px #4da6ff,
+                   0 0 50px #4da6ff;
+    }
+    100%{
+        box-shadow:0 0 10px #4da6ff;
+    }
+}
